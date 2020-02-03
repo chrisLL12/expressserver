@@ -1,0 +1,28 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1 {
+    font-family: Futura, Helvetica, Sans-Serif;
+    font-size: 2rem;
+    color: #ffffff;
+    background-color: #ff0000;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+}
+
+#p {
+    width: 20rem;
+    background-color: #ffffff;
+    font-family: Futura;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+}
+
+#p:hover {
+    cursor: pointer;
+    background-color: #d3d3d3;
+}
