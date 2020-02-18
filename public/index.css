@@ -12,17 +12,85 @@ h1 {
     background-color: #ff0000;
     border-radius: 0.5rem;
     padding: 0.5rem;
+    margin-left: 2.5rem;
 }
 
-#p {
+#am, #l, #ch, #es {
     width: 20rem;
+    height: 40px;
     background-color: #ffffff;
     font-family: Futura;
     font-size: 1rem;
     border-radius: 0.5rem;
+
 }
 
-#p:hover {
+#up, #del {
+    width: 10rem;
+    height: 2rem;
+    background-color: #ffffff;
+    font-family: Futura;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    margin-left: 5rem;
+}
+
+#buttons li {
+    padding: 0.5rem;
+    background-color: transparent;
+}
+
+#am:hover, #l:hover, #ch:hover, #es:hover, #up:hover, #del:hover {
     cursor: pointer;
     background-color: #d3d3d3;
 }
+
+
+#addForm ul li #addId {
+    width: 20rem;
+    height: 25px;
+    background-color: #ffffff;
+    font-family: Futura;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    padding: 0.4rem;
+    margin-bottom: 4px;
+}
+
+#addForm ul li #addDrink {
+    width: 20rem;
+    height: 25px;
+    background-color: #ffffff;
+    font-family: Futura;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    padding: 0.4rem;
+}
+
+ul {
+    list-style-type: none;
+}
+
+
+#submit-button {
+    height: 40px;
+    background-color: #ff0000;
+    color: #fff;
+    font-family: Futura;
+    font-size: 1.4rem;
+    border-radius: 0.5rem;
+    width: 20rem;
+    margin-top: 4px;
+    margin-left: 4px;
+}
+
+h3 {
+    font-family: Futura;
+    margin-left: 2.5rem;
+}
+
+#submit-button:hover {
+    cursor: pointer;
+    background-color: #db0f00;
+}
+

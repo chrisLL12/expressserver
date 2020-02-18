@@ -1,26 +1,53 @@
-const printRating = ({ name, rating, featuredComment }) => {
-        if (rating >= 5) {
-                let el = document.querySelector('#p');
-                el.textContent = (` Excellent Choice! Drink: ${name}. Rating: ${rating}/5. Featured Review: ${featuredComment}`);
-        } else if (rating === 4) {
-                let el = document.querySelector('#p');
-                el.textContent = (`Great Pick! Drink: ${name}. Rating: ${rating}/5. Featured Review: ${featuredComment}`);
-        } else if (rating === 3) {
-                let el = document.querySelector('#p');
-                el.textContent = (`Okay choice! Drink: ${name}. Rating: ${rating}/5. Featured Review: ${featuredComment}`);
-        } else if (rating <= 2) {
-                let el = document.querySelector('#p');
-                el.textContent = (`Maybe try a different drink? Drink: ${name}. Rating: ${rating}/5. Featured Review: ${featuredComment}`);
-        } else {
-                return "Try a drink!";
-        }
+const displayName = ({id, drinks_name, reviews_comment}) =>
+        alert(`${id}. ${drinks_name}. ${reviews_comment}`);
+
+
+// Add drink
+const alertAddDrink = async addDrinkInfo => {
+        const response = await fetch('/api/addDrink' + addDrinkInfo);
+        const drink = await response.json();
+        displayName(drink);
 };
 
-const showRating = async reviewDataId => {
-        const response = await fetch ('/api/reviewData/' + reviewDataId);
-        const ratings = await response.json();
-        printRating(ratings);
+// Get drink
+const alertGetDrink = async drinkInfo => {
+        try {
+        const response = await fetch('/api/getDrink' + drinkInfo);
+        const drink = await response.json();
+        displayName(drink);
+        return true;
+
+        } catch (err) {
+                console.error(err);
+                alert('An error has occurred.');
+        }
+        return false;
 };
+
+// Update drink
+const updateDrink = async updateInfo => {
+        const response = await fetch('/api/updateDrink' + updateInfo);
+        const drinkChange = await response.json();
+        displayName(drinkChange);
+};
+
+// Delete drink
+const deleteDrink = async deleteInfo => {
+        const response = await fetch('/api/deleteDrink' + deleteInfo);
+        const deleteChange = await response.json();
+        displayName(deleteChange);
+};
+
+
+// Event listeners
+document.getElementById('addForm').addEventListener('submit');
+
+
+
+
+
+
+
 
 
 

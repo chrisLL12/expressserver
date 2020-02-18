@@ -7,13 +7,32 @@
 </head>
 <body>
     <h1>Coffee Reviews</h1>
-    <button id="p" onClick="showRating(1)">Hot Hazelnut Americano</button>
-    <br>
-    <button id="p" onClick="showRating(2)">Iced Latte</button>
-    <br>
-    <button id="p" onClick="showRating(3)">Iced Chocolate Coffee</button>
-    <br>
-    <button id="p" onClick="showRating(4)">Double Espresso</button>
+    <ul id="buttons">
+        <li><button id="am" onClick="alertGetDrink(1)">Hot Hazelnut Americano</button></li>
+        <li><button id="l" onClick="alertGetDrink(2)">Iced Latte</button></li>
+        <li><button id="ch" onClick="alertGetDrink(3)">Iced Chocolate Coffee</button></li>
+        <li><button id="es" onClick="alertGetDrink(4)">Double Espresso</button></li>
+        <li><button id="up" onClick="updateDrink(1)">Update</button></li>
+        <li><button id="del" onClick="deleteDrink(2)">Delete</button></li>
+
+    </ul>
+    <!--<li id="stuff" onClick="getDrinkById(null)"></li> -->
+
+    <h3>Add a drink and review!</h3>
+    <form id="addForm">
+        <ul>
+            <li>
+                <input id="addId" name="id" placeholder="10" />
+            </li>
+            <li>
+                <input id="addDrink" name="drinks_name" placeholder="Add a drink!" />
+            </li>
+            <li>
+            <input id="submit-button" onClick="alertAddDrink(5)" type="submit" />
+            </li>
+        </ul>
+    </form>
+
     <script src="app.js"></script>
 </body>
 
