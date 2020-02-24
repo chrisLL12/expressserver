@@ -71,7 +71,7 @@ const fields = ['id', 'drinks_name'];
 // Drink object
 const parseForm = formId => {
         const drink = fields.reduce((drink, field) => {
-                drink[field] = parseField(formId, field); // eg. joke.id = "5"
+                drink[field] = parseField(formId, field);
                 return drink;
         }, {});
         drink.id = parseFloat(drink.id);
@@ -94,7 +94,7 @@ document.getElementById('ch').addEventListener('click', () => alertGetDrink(3));
 document.getElementById('es').addEventListener('click', () => alertGetDrink(4));
 
 document.getElementById('up').addEventListener('click', () => updateDrink(1));
-document.getElementById('deleteForm').addEventListener('submit', deleteDrink);
+
 
 
 

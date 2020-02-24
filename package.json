@@ -4,11 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "db-test": "npm run reset-test-db; npm run test",
+    "make-test-db": "dropdb drink-test; createdb drink-test",
+    "reset-test-db": "npm run make-test-db; npm run migrate -- --env=test; npm run test-seed -- --env-test",
     "apply-db-schema": "psql -d coffeereviews -f sql/schema.sql",
     "recreate-db": "dropdb coffeereviews; createdb coffeereviews",
     "reset-db": "npm run recreate-db; npm run apply-db-schema; npm run seed-db",
     "seed-db": "psql -d coffeereviews -f sql/seed.sql",
-    "test": "mocha -r esm test/rating.specs.js",
+    "test": "NODE_ENV=test mocha --exit -r esm test/services/drinks.spec.js",
     "start": "node -r esm src/index.js"
   },
   "author": "",

@@ -66,7 +66,7 @@ exports.up = async knex => {
             .onDelete('cascade');
         table.foreign('users_id')
             .references('users.id')
-            .onDelete('');
+            .onDelete('cascade');
         table.primary(['drinks_id', 'rating_id', 'reviews_id', 'users_id']);
     });
 };
