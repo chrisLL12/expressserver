@@ -4,40 +4,51 @@ import { addDrink, getDrink, updateDrink, deleteDrink } from './services/review'
 const app = express();
 app.use(express.json());
 
+
 // Add drink route
 const addDrinkRoute = async (request, response) => {
-    const drink = request.body;
-    await addDrink(drink);
-    response.json({ success: true });
+    try {
+        const drink = request.body;
+        const addDrink = await addDrink(drink);
+        response.json(addDrink);
+    } catch (err) {
+        response.json({success: false});
+    }
 };
-app.post('/api/addDrink', addDrinkRoute);
+app.post('/api/addDrink/', addDrinkRoute);
 
 // Get drink and review route
 const getDrinkRoute = async (request, response) => {
     try {
         const { id } = await request.params || {};
-        await getDrink(parseFloat(id));
-        response.json({ success: true });
+        const drink = await getDrink(parseFloat(id));
+        response.json(drink);
         return true;
     } catch (err) {
-        response.json({ success: false })
+        response.json({success: false});
     }
     return false;
 };
-app.get('/api/getDrink', getDrinkRoute);
+app.get('/api/getDrink/:id', getDrinkRoute);
 
 // Update drink route
 const updateDrinkRoute = async (request, response) => {
-    const { id } = request.params || {};
-    await updateDrink(parseFloat(id));
-    response.json({success: true});
+    try {
+        const { id } = request.params || {};
+        await updateDrink(parseFloat(id));
+        response.json({ success: true });
+        return true;
+    } catch (err) {
+        response.json({ success: false});
+    }
+    return false;
 };
-app.get('/api/updateDrink', updateDrinkRoute);
+app.post('/api/updateDrink/:id', updateDrinkRoute);
 
 // Delete drink route
 const deleteDrinkRoute = async (request, response) => {
-    const { id } = request.params || {};
-    await deleteDrink(parseFloat(id));
+    const { id } = request.query || {};
+    await deleteDrink(id);
     response.json({success: true});
 };
 app.get('/api/deleteDrink', deleteDrinkRoute);
@@ -49,7 +60,8 @@ app.use('/static', staticRoute);
 app.use('/', staticRoute);
 
 
-app.listen(8000, console.log('Listening on port 8000'));
+app.listen(8000, () =>
+    console.log(`Listening on port 8000!`));
 
 export default app;
 

@@ -1,5 +1,6 @@
 import knex from '../database';
 
+
 // Add drink
 export const addDrink = async (drink, ...categoryIds) => {
     const [drink_id] = await knex('drinks').insert(drink).returning('id');
@@ -10,19 +11,20 @@ export const addDrink = async (drink, ...categoryIds) => {
     return {...drink, id: drink_id};
 };
 
-// Get drink and review
-export const getDrink= async id => {
+export const getDrink = async id =>
     await knex('drinks')
         .select('drinks.drinks_name',
-                'reviews.reviews_comment')
-        .join('reviews', 'drinks.id', 'reviews.id');
-};
+            'reviews.reviews_comment')
+        .join('reviews', 'drinks.id', 'reviews.id')
+        .where({ 'drinks.id': id });
 
 // Update drink
-export const updateDrink = (id, drinkUpdate) =>
-    knex('drinks')
-        .update(drinkUpdate)
-        .where({ id });
+export const updateDrink = (id, drinkChange) =>
+    // knex('drinks')
+    //     .update({drinks_name: "Latte"}, ['id', 'drinks_name'])
+    //     .where({ 'drinks.id' : id });
+    knex('drinks').update(drinkChange).where({ id });
+
 
 // Delete drink
 export const deleteDrink = async id => {

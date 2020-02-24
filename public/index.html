@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,34 +7,41 @@
     <link href="index.css" rel="stylesheet" />
 </head>
 <body>
-    <h1>Coffee Reviews</h1>
-    <ul id="buttons">
-        <li><button id="am" onClick="alertGetDrink(1)">Hot Hazelnut Americano</button></li>
-        <li><button id="l" onClick="alertGetDrink(2)">Iced Latte</button></li>
-        <li><button id="ch" onClick="alertGetDrink(3)">Iced Chocolate Coffee</button></li>
-        <li><button id="es" onClick="alertGetDrink(4)">Double Espresso</button></li>
-        <li><button id="up" onClick="updateDrink(1)">Update</button></li>
-        <li><button id="del" onClick="deleteDrink(2)">Delete</button></li>
+<h1>Coffee Reviews</h1>
+<ul id="buttons">
+    <li><button id="am">Hot Hazelnut Americano</button></li>
+    <li><button id="l">Iced Latte</button></li>
+    <li><button id="ch"">Iced Chocolate Coffee</button></li>
+    <li><button id="es">Double Espresso</button></li>
+    <li><button id="up">Update</button></li>
+    <li><button id="del">Delete</button></li>
 
+</ul>
+<!--<li id="stuff"></li> -->
+<h3>Add a drink and review!</h3>
+<form id="addForm">
+    <ul>
+        <li>
+            <input id="addId" name="id" placeholder="10" />
+        </li>
+        <li>
+           <input id="addDrink" name="drinks_name" placeholder="Add a drink!" />
+        </li>
+
+        <li>
+            <input id="submit-button" type="submit" />
+        </li>
     </ul>
-    <!--<li id="stuff" onClick="getDrinkById(null)"></li> -->
+</form>
+<h2>Delete a Drink</h2>
+<form id="deleteForm">
+    <label>ID: <input id="delete" name="id" placeholder="7"/></label>
+    <label>Drink: <input id="delete" name="drinks_name" placeholder="7"/></label>
+    <input type="submit" />
+</form>
 
-    <h3>Add a drink and review!</h3>
-    <form id="addForm">
-        <ul>
-            <li>
-                <input id="addId" name="id" placeholder="10" />
-            </li>
-            <li>
-                <input id="addDrink" name="drinks_name" placeholder="Add a drink!" />
-            </li>
-            <li>
-            <input id="submit-button" onClick="alertAddDrink(5)" type="submit" />
-            </li>
-        </ul>
-    </form>
 
-    <script src="app.js"></script>
+<script src="app.js"></script>
 </body>
 
 </html>

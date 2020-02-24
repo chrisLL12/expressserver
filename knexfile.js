@@ -3,8 +3,8 @@ module.exports = {
     client: 'postgresql',
     connection: {
       database: 'coffeereviews',
-      user: 'coffee',
-      password: 'coffeestuff'
+      user: 'chris',
+      password: 'coffee'
     }
   }
 };
