@@ -9,15 +9,11 @@
 <body>
 <h1>Coffee Reviews</h1>
 <ul id="buttons">
-    <li><button id="am">Hot Hazelnut Americano</button></li>
-    <li><button id="l">Iced Latte</button></li>
-    <li><button id="ch"">Iced Chocolate Coffee</button></li>
-    <li><button id="es">Double Espresso</button></li>
-    <li><button id="up">Update</button></li>
-    <li><button id="del">Delete</button></li>
+    <li><button id="am">Caramel Latte</button></li>
+    <li><button id="l">Iced Vanilla Coffee</button></li>
+    <li><button id="ch">Hazelnut Americano</button></li>
 
 </ul>
-<!--<li id="stuff"></li> -->
 <h3>Add a drink and review!</h3>
 <form id="addForm">
     <ul>
@@ -33,14 +29,44 @@
         </li>
     </ul>
 </form>
-<h2>Delete a Drink</h2>
-<form id="deleteForm">
-    <label>ID: <input id="delete" name="id" placeholder="7"/></label>
-    <label>Drink: <input id="delete" name="drinks_name" placeholder="7"/></label>
-    <input type="submit" />
+
+<!-- Update form -->
+<h3>Update Drink</h3>
+<form id="updateForm">
+    <ul>
+        <li>
+            <input id="updateId" name="id" placeholder="10" />
+        </li>
+        <li>
+            <input id="updateDrink" name="drinks_name" placeholder="Update a drink!" />
+        </li>
+
+        <li>
+            <input id="updateButton" type="submit" />
+        </li>
+    </ul>
 </form>
 
+<!-- Delete drink -->
+<h3>Delete a Drink</h3>
+<form id="deleteForm">
+    <ul>
+        <li>
+            <input id="deleteId" name="id" placeholder="7"/>
+        </li>
+        <li>
+            <input id="deleteDrink" name="drinks_name" placeholder="Delete Drink"/>
+        </li>
+        <li>
+            <input id="deleteButton" type="submit" />
+        </li>
+    </ul>
+</form>
 
+<script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
 <script src="app.js"></script>
 </body>
 

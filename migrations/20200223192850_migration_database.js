@@ -78,6 +78,15 @@ exports.up = async knex => {
 // Down migration
 // Users table
 exports.down = async knex => {
+    // Drinks_categories table
+    await knex.schema.dropTableIfExists('drinks_categories');
+    await knex.schema.createTable('drinks_categories', table => {
+        table.integer('drinks_id');
+        table.integer('rating_id');
+        table.integer('reviews_id');
+        table.integer('users_id');
+    });
+
     await knex.schema
         .dropTableIfExists('users');
     await knex.schema.createTable(
@@ -117,13 +126,6 @@ exports.down = async knex => {
         table.integer('rating_number');
     });
 
-    // Drinks_categories table
-    await knex.schema.dropTableIfExists('drinks_categories');
-    await knex.schema.createTable('drinks_categories', table => {
-        table.integer('drinks_id');
-        table.integer('rating_id');
-        table.integer('reviews_id');
-        table.integer('users_id');
-    });
+
 
 };

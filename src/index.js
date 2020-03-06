@@ -35,7 +35,7 @@ app.get('/api/getDrink/:id', getDrinkRoute);
 const updateDrinkRoute = async (request, response) => {
     try {
         const { id } = request.params || {};
-        await updateDrink(parseFloat(id));
+        await updateDrink(parseFloat(id), request.body);
         response.json({ success: true });
         return true;
     } catch (err) {
@@ -51,15 +51,14 @@ const deleteDrinkRoute = async (request, response) => {
     await deleteDrink(id);
     response.json({success: true});
 };
-app.get('/api/deleteDrink', deleteDrinkRoute);
+app.get('/api/deleteDrink/', deleteDrinkRoute);
 
-
-
+// Static routes
 const staticRoute = express.static('public');
 app.use('/static', staticRoute);
 app.use('/', staticRoute);
 
-
+// Listening on port 8000
 app.listen(8000, () =>
     console.log(`Listening on port 8000!`));
 

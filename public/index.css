@@ -46,7 +46,8 @@ h1 {
 }
 
 
-#addForm ul li #addId {
+#addForm ul li #addId,#updateForm ul li #updateId,
+#deleteForm ul li #deleteId {
     width: 20rem;
     height: 25px;
     background-color: #ffffff;
@@ -57,7 +58,8 @@ h1 {
     margin-bottom: 4px;
 }
 
-#addForm ul li #addDrink {
+#addForm ul li #addDrink, #updateForm ul li #updateDrink,
+#deleteForm ul li #deleteDrink{
     width: 20rem;
     height: 25px;
     background-color: #ffffff;
@@ -72,7 +74,7 @@ ul {
 }
 
 
-#submit-button {
+#submit-button, #updateButton, #deleteButton {
     height: 40px;
     background-color: #ff0000;
     color: #fff;
@@ -93,4 +95,7 @@ h3 {
     cursor: pointer;
     background-color: #db0f00;
 }
+
+
+
 
