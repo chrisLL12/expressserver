@@ -202,6 +202,11 @@ const closePopup = () => {
     document.querySelector('.bg-modal').style.display = 'none';
 };
 
+//Different page
+const changeText = () => {
+    document.getElementById('top-button').href= '?#';
+};
+
 // Event listeners
 const form = document.getElementById('addForm');
 form.addEventListener('submit', alertAddDrink);

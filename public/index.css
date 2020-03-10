@@ -103,11 +103,12 @@ h3 {
     background-color: rgba(0, 0, 0, 0.5);
     position: absolute;
     top: 0;
-    display: flex;
     justify-content: center;
     align-items: center;
     display: none;
 }
+
+
 
 .modal-content {
     width: 50rem;
