@@ -7,12 +7,18 @@
     <link href="index.css" rel="stylesheet" />
 </head>
 <body>
+<div class="top">
+    <div class="top-content">
+        <a href="/?#" id="top-button">Sign up/Login!</a>
+    </div>
+
+</div>
+<div id="status"></div>
 <h1>Coffee Reviews</h1>
 <ul id="buttons">
     <li><button id="am">Caramel Latte</button></li>
     <li><button id="l">Iced Vanilla Coffee</button></li>
     <li><button id="ch">Hazelnut Americano</button></li>
-
 </ul>
 <h3>Add a drink and review!</h3>
 <form id="addForm">
@@ -62,6 +68,30 @@
         </li>
     </ul>
 </form>
+
+<!-- Popup signup/login section -->
+<div class="bg-modal">
+    <div class="modal-content">
+        <div class="close">+</div>
+        <!-- Login Form -->
+        <h3 id="loginTitle">Login</h3>
+        <form id="loginId">
+            <input id="userLogIn" type="text" placeholder="Username"/>
+            <input id="userPassword" type="text" placeholder="Password"/>
+            <input id="loginButton" type="submit" value="Login"/>
+        </form>
+        <p id="or">Or...</p>
+        <!-- Sign Up form -->
+        <h3 id="signUpTitle">Signup!</h3>
+        <form id="signUpId">
+            <input id ="displayName" type="text" placeholder="Display Name"/>
+            <input id ="email" type="text" placeholder="Email"/>
+            <input id="username" type="text" placeholder="Username"/>
+            <input id="passwordText" type="text" placeholder="Password"/>
+            <input id="signUpButton" type="submit" value="Sign Up"/>
+        </form>
+    </div>
+</div>
 
 <script
         src="https://code.jquery.com/jquery-3.4.1.min.js"
