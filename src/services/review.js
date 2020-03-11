@@ -13,14 +13,16 @@ export const addDrink = async(drink, ...categoryIds) => {
 
 // Get drink
 export const getDrink = async id => {
-    const drinks =
-        await knex('drinks')
-            .select('drinks.drinks_name', "drinks.id", "reviews.reviews_comment")
-            .join('reviews', 'drinks.id', 'reviews.id')
-            .where({'drinks.id':id});
+    //const drinks =
+    await knex('drinks')
+        .select('drinks.drinks_name', "drinks.id", "reviews.reviews_comment")
+        .join('reviews', 'drinks.id', 'reviews.id')
+        .where({'drinks.id': id});
 
-    return drinks[0] || null;
+    //return drinks[0] || null;
 };
+
+// Get review
 
 // Update drink
 export const updateDrink = (id) =>

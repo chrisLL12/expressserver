@@ -1,6 +1,7 @@
 import { compareHashed } from '../../auth';
 import { createUser } from '../services/users';
 import { getUserByUsername } from "../services/users";
+import { getDrink } from "../services/review";
 // import { sendResetEmail } from '../email';
 
 const convertUserFromDatabase = user => {
@@ -9,11 +10,20 @@ const convertUserFromDatabase = user => {
     return user;
 };
 
+const wrapSubmitter = drink => {
+    drink.submitter = { drinksName: drink.drinks_name, id: drink.id };
+    delete drink.drinks_name;
+    delete drink.id;
+    return drink;
+};
+
 const resolvers = {
     addDrink: async ({ drink }, { session }) => {
         if(!session.user) throw new Error('Please login');
         drink.created_by = session.user.id;
     },
+
+    drinks: async ({ id }) => wrapSubmitter(await getDrink(id)),
 
     login: async ({loginInput: {username, password}}, {session}) => {
         const user = await getUserByUsername(username);

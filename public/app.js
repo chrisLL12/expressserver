@@ -4,7 +4,7 @@ $(document).ready(() => {
         const userLogIn = $('#userLogIn').val();
         const userPassword = $('#userPassword').val();
         $.ajax({
-            url: 'http://localhost:8000/api/graphql/',
+            url: '/api/graphql/',
             type: 'POST',
             contentType: 'application/json',
             data: JSON.stringify({
@@ -40,7 +40,7 @@ $(document).ready(() => {
         const username = $('#username').val();
         const password = $('#passwordText').val();
         $.ajax({
-            url: 'http://localhost:8000/api/graphql',
+            url: '/api/graphql',
             type: 'POST',
             contentType: 'application/json',
             data: JSON.stringify({
@@ -92,31 +92,32 @@ const alertAddDrink = async e => {
     }
 };
 
-// Get drinks
-$(document).ready(() => {
-    $('#signUpId').submit(() => {
-        const caramelLatte = $('#am').val();
-        const icedVanillaCoffee = $('#l').val();
-        const hazelnut = $('#ch').val();
-        $.ajax({
-            url: 'http://localhost:8000/api/graphql',
-            type: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify({
-                query: `{ 
-                
-                    
-                    
-                 }`
-            }),
-            success: (result) => {
-                console.log('success', result);
-                $('#status').html('Hello: ' + result.data.signup);
-            }
 
-        });
-    });
-});
+// Get drinks
+// $(document).ready(() => {
+//     $('#buttons').click(() => {
+//         const caramelLatte = $('#am').val(1);
+//         const icedVanillaCoffee = $('#l').val(2);
+//         const hazelnut = $('#ch').val(3);
+//         $.ajax({
+//             url: 'http://localhost:8000/api/graphql',
+//             type: 'POST',
+//             contentType: 'application/json',
+//             data: JSON.stringify({
+//                 query: `{
+//
+//
+//
+//                  }`
+//             }),
+//             success: (data) => {
+//                 alert(JSON.stringify(data));
+//                 $('#status').html('Hello: ' + data.data.);
+//             }
+//
+//         });
+//     });
+// });
 
 
 

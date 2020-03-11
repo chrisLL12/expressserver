@@ -3,18 +3,20 @@ import { buildSchema } from "graphql";
 export default buildSchema(`
     type Query {
         drinks(id: ID!): Drink
-        reviews(id: ID!): Reviews  
+        reviews(id: ID!): Review
         currentUser: User  
     }  
     
     type Drink {
         id: ID!
-        drinks_name: String!
+        drinksName: String!
+        submitter: User!
     }  
     
-    type Reviews {
+    type Review {
         id: ID!
-        reviews_comment: String!
+        reviewsComment: String!
+        submitter: User!
     }
     
     type User {
@@ -31,7 +33,7 @@ export default buildSchema(`
         addDrink (drinks: DrinksInput!): Drink
         deleteDrink (id: ID!): SuccessResponse
         updateDrink (update: DrinksUpdate!): Drink
-        addReview (reviews: ReviewsInput!): Reviews
+        addReview (review: ReviewsInput!): Review
         login(loginInput: LoginInput!): User
         requestPasswordReset(username: String!): SuccessResponse
         resetPassword(resetInput: PasswordResetInput!): SuccessResponse
