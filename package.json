@@ -4,14 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "npm run migrate; npm run seed",
     "knex": "node -r esm node_modules/.bin/knex",
     "db-test": "npm run reset-test-db; npm run test",
     "make-test-db": "dropdb drink-test; createdb drink-test",
     "reset-test-db": "npm run make-test-db; npm run migrate -- --env=test; npm run test-seed -- --env-test",
-    "apply-db-schema": "psql -d coffeereviews -f sql/schema.sql",
-    "recreate-db": "dropdb coffeereviews; createdb coffeereviews",
-    "reset-db": "npm run recreate-db; npm run apply-db-schema; npm run seed-db",
-    "seed-db": "npm run knex -- seed:run",
+    "make-db": "dropdb coffeereviews; createdb coffeereviews",
+    "migrate": "npm run knex -- migrate:latest",
+    "reset-db": "npm run make-db; npm run migrate; npm run seed",
+    "seed": "npm run knex -- seed:run",
     "test": "NODE_ENV=test mocha --exit -r esm test/services/drinks.spec.js",
     "start": "node -r esm src/index.js"
   },
@@ -20,7 +21,7 @@
   "dependencies": {
     "bcrypt": "^4.0.1",
     "chai": "^4.2.0",
-    "connect-session-knex": "^1.5.0",
+    "connect-session-knex": "^1.6.0",
     "esm": "^3.2.25",
     "express": "^4.17.1",
     "express-graphql": "^0.9.0",

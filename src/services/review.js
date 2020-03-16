@@ -1,14 +1,24 @@
 import knex from '../database';
+import { hashPassword } from "../../auth";
 
 
 // Add drink
-export const addDrink = async(drink, ...categoryIds) => {
-    const [drink_id] = await knex('drinks').insert(drink).returning('id');
-    const categoryRecords = categoryIds.map(
-        category_id => ({ drink_id, category_id })
-    );
-    await knex('drinks_categories').insert(categoryRecords);
-    return {...drink, id: drink_id};
+// export const addDrink = async(drink, ...categoryIds) => {
+//     const [drink_id] = await knex('drinks').insert(drink).returning('id');
+//     const categoryRecords = categoryIds.map(
+//         category_id => ({ drink_id, category_id })
+//     );
+//     await knex('drinks_categories').insert(categoryRecords);
+//     return {...drink, id: drink_id};
+// };
+
+// Add drink
+export const addDrink = async ({ id, drinks_name }) => {
+    const [drink] = await knex('drinks').insert({
+        id,
+        drinks_name
+    }).returning(['id', 'drinks_name']);
+    return drink;
 };
 
 // Get drink
@@ -22,11 +32,17 @@ export const getDrink = async id => {
     //return drinks[0] || null;
 };
 
-// Get review
+// Get review by id
+export const getReviewById = async id =>
+    (await knex('reviews')
+        .select()
+        .where({ id }))
+        [0];
+
 
 // Update drink
-export const updateDrink = (id) =>
-    knex('drinks').update('drinks'.drinks_name, 'drinks'.id).where({ 'drinks.id' : id });
+export const updateDrinkChange = (id, drinks_name) =>
+    knex('drinks').update(drinks_name).where({ id });
 
 
 // Delete drink

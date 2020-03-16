@@ -2,21 +2,20 @@ import { buildSchema } from "graphql";
 
 export default buildSchema(`
     type Query {
-        drinks(id: ID!): Drink
-        reviews(id: ID!): Review
+        drinks(id: ID!): Review
+        reviews(id: ID!): Drink
         currentUser: User  
     }  
     
     type Drink {
         id: ID!
-        drinksName: String!
-        submitter: User!
+        drinks_name: String!
     }  
     
     type Review {
         id: ID!
-        reviewsComment: String!
-        submitter: User!
+        reviews_comment: String!
+        submitter: ID!
     }
     
     type User {
@@ -30,9 +29,9 @@ export default buildSchema(`
     }
     
     type Mutation {
-        addDrink (drinks: DrinksInput!): Drink
+        addNewDrink (drink: DrinksInput!): Drink
         deleteDrink (id: ID!): SuccessResponse
-        updateDrink (update: DrinksUpdate!): Drink
+        updateDrink (drink: DrinksUpdate!): Drink
         addReview (review: ReviewsInput!): Review
         login(loginInput: LoginInput!): User
         requestPasswordReset(username: String!): SuccessResponse
@@ -59,6 +58,7 @@ export default buildSchema(`
     }
     
     input DrinksInput {
+        id: ID!
         drinks_name: String!
     }
     

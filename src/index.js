@@ -35,6 +35,20 @@ app.use('/api/graphql/', graphqlHTTP({
     graphiql: env === 'development'
 }));
 
+// Static routes
+const staticRoute = express.static('public');
+app.use('/static', staticRoute);
+app.use('/', staticRoute);
+
+// Listening on port 8000
+app.listen(process.env.PORT, () =>
+    console.log(`Listening on port ${process.env.PORT}`));
+
+export default app;
+
+
+
+
 // // Add drink route
 // const addDrinkRoute = async (request, response) => {
 //     try {
@@ -82,15 +96,4 @@ app.use('/api/graphql/', graphqlHTTP({
 //     response.json({success: true});
 // };
 // app.get('/api/deleteDrink/', deleteDrinkRoute);
-
-// Static routes
-const staticRoute = express.static('public');
-app.use('/static', staticRoute);
-app.use('/', staticRoute);
-
-// Listening on port 8000
-app.listen(process.env.PORT, () =>
-    console.log(`Listening on port ${process.env.PORT}!`));
-
-export default app;
 

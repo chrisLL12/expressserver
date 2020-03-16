@@ -1,7 +1,10 @@
 import { compareHashed } from '../../auth';
 import { createUser } from '../services/users';
 import { getUserByUsername } from "../services/users";
-import { getDrink } from "../services/review";
+import { deleteDrink } from "../services/review";
+import { getReviewById } from "../services/review";
+import { addDrink } from "../services/review";
+import { updateDrinkChange } from "../services/review";
 // import { sendResetEmail } from '../email';
 
 const convertUserFromDatabase = user => {
@@ -10,20 +13,35 @@ const convertUserFromDatabase = user => {
     return user;
 };
 
-const wrapSubmitter = drink => {
-    drink.submitter = { drinksName: drink.drinks_name, id: drink.id };
-    delete drink.drinks_name;
-    delete drink.id;
-    return drink;
+
+
+const wrapSubmitter = review => {
+    // review.submitter = { reviewsComment: review.reviews_comment, id: review.id };
+    // delete review.review.review.id;
+    // delete review.reviews.reviews_comment;
+    // return review;
 };
 
-const resolvers = {
-    addDrink: async ({ drink }, { session }) => {
-        if(!session.user) throw new Error('Please login');
-        drink.created_by = session.user.id;
-    },
 
-    drinks: async ({ id }) => wrapSubmitter(await getDrink(id)),
+
+const resolvers = {
+    // addDrink: async ({ drink }, { session }) => {
+    //     if(!session.user) throw new Error('Please login');
+    //     drink.created_by = session.user.id;
+    // },
+
+    // Add drink
+    addNewDrink: async ({ drink }) => await addDrink(drink),
+
+    // Update Drink
+    updateDrink: async (id, drinks_name) => await updateDrinkChange(id, drinks_name),
+
+    // Delete Drink
+    deleteDrink: async ({ id }) => await deleteDrink(id),
+
+
+    // Resolve review by id
+    drinks: async ({ id }) => await getReviewById(id),
 
     login: async ({loginInput: {username, password}}, {session}) => {
         const user = await getUserByUsername(username);
