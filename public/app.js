@@ -142,9 +142,9 @@ $(document).ready(() => {
                      }
                  }`
             }),
-            success: (data) => {
-                alert('Deleted! ' + JSON.stringify(data));
-                $('#status').html('Drink deleted!');
+            success: () => {
+                alert(JSON.stringify({ success:true }));
+                $('#status').html("Deleted!");
             },
             error: () => {
                 alert('error');
@@ -175,8 +175,8 @@ $(document).ready(() => {
                  }`
             }),
             success: (data) => {
-                alert('Updated! ' + JSON.stringify(data));
-                $('#status').html(data.data.updateDrink.drinks_name);
+                alert(JSON.stringify({ success : true }));
+                $('#status').html('Update: ' + data.data.updateDrink.drinks_name);
             },
             error: () => {
                 alert('error');
