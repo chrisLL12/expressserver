@@ -41,8 +41,8 @@ app.use('/static', staticRoute);
 app.use('/', staticRoute);
 
 // Listening on port 8000
-app.listen(process.env.PORT, () =>
-    console.log(`Listening on port ${process.env.PORT}`));
+app.listen(process.env.PORT || 8000, () =>
+    console.log(`Listening on port 8000`));
 
 export default app;
 

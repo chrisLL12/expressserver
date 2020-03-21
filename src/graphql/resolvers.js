@@ -13,17 +13,6 @@ const convertUserFromDatabase = user => {
     return user;
 };
 
-
-
-const wrapSubmitter = review => {
-    // review.submitter = { reviewsComment: review.reviews_comment, id: review.id };
-    // delete review.review.review.id;
-    // delete review.reviews.reviews_comment;
-    // return review;
-};
-
-
-
 const resolvers = {
     // addDrink: async ({ drink }, { session }) => {
     //     if(!session.user) throw new Error('Please login');
@@ -34,7 +23,7 @@ const resolvers = {
     addNewDrink: async ({ drink }) => await addDrink(drink),
 
     // Update Drink
-    updateDrink: async (id, drinks_name) => await updateDrinkChange(id, drinks_name),
+    updateDrink: async ({ drink }) => await updateDrinkChange(drink),
 
     // Delete Drink
     deleteDrink: async ({ id }) => await deleteDrink(id),

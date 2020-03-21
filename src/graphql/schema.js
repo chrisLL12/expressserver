@@ -67,7 +67,8 @@ export default buildSchema(`
     }
     
     input DrinksUpdate {
-        id: ID!
-        drinks_name: String
+        id: ID! 
+        drinks_name: String!
     }
+    
 `);

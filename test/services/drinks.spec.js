@@ -2,22 +2,22 @@ import { expect } from 'chai';
 import { getDrink, deleteDrink } from '../../src/services/review';
 import knex from '../../src/database';
 
-describe ('drink services', () => {
+
+
     describe('getDrink', () => {
         it('gets a drink by id', async () => {
             const { drinks_name } = await getDrink(1);
-            expect(drinks_name).to.equal('caramel latte');
+            expect(drinks_name).to.equal('Caramel Latte');
         });
         it('returns null', async() => {
             const drink = await getDrink(20);
             expect(drink).to.be.undefined;
         });
     });
-});
 
-const fakeDrink = {
-  drinks_name: 'iced caramel coffee'
-};
+// const fakeDrink = {
+//     drinks_name: 'iced caramel coffee'
+// };
 
 describe('fake drink test', () => {
     let drink_id;

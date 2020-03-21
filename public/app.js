@@ -18,7 +18,6 @@ $(document).ready(() => {
                         displayName
                         username
                      }
-                 
                  }`
             }),
             success: (data) => {
@@ -146,6 +145,38 @@ $(document).ready(() => {
             success: (data) => {
                 alert('Deleted! ' + JSON.stringify(data));
                 $('#status').html('Drink deleted!');
+            },
+            error: () => {
+                alert('error');
+            }
+
+        });
+    });
+});
+
+// Update Drink
+$(document).ready(() => {
+    $('#updateForm').submit((e) => {
+        const updateById = $('#updateId').val();
+        const drinkChange = $('#updateDrink').val();
+        e.preventDefault();
+        $.ajax({
+            url: '/api/graphql',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({
+                query: `mutation { 
+                    updateDrink(drink: { 
+                        id: "${updateById}"
+                        drinks_name: "${drinkChange}"
+                     }) { 
+                        drinks_name
+                      }
+                 }`
+            }),
+            success: (data) => {
+                alert('Updated! ' + JSON.stringify(data));
+                $('#status').html(data.data.updateDrink.drinks_name);
             },
             error: () => {
                 alert('error');
