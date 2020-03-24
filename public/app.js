@@ -92,6 +92,35 @@ $(document).ready(() => {
     });
 });
 
+// Add question
+$(document).ready(() => {
+    $('#addQuestionForm').submit((e) => {
+        const newQuestion = $('#addQuestion').val();
+        e.preventDefault();
+        $.ajax({
+            url: '/api/graphql',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({
+                query: `mutation { 
+                    addQuestion(question:{ 
+                        question_title: "${newQuestion}"
+                     }) {
+                        question_title
+                     }
+                 }`
+            }),
+            success: (data) => {
+                $('#newQuestion-info').html('New question asked: ' + JSON.stringify(data.data.addQuestion.question_title));
+            },
+            error: () => {
+                alert('error');
+            }
+
+        });
+    });
+});
+
 
 // Add drink jquery
 $(document).ready(() => {
@@ -106,17 +135,14 @@ $(document).ready(() => {
             data: JSON.stringify({
                 query: `mutation { 
                     addNewDrink(drink:{ 
-                        id: "${newId}"
                         drinks_name: "${newDrink}"
                      }) {
-                        id
                         drinks_name
                      }
                  }`
             }),
             success: (data) => {
-                alert('Added! ' + JSON.stringify(data));
-                $('#status').html('New drink! ' + JSON.stringify(data.data.addNewDrink.drinks_name));
+                $('#newDrink-info').html('New drink added: ' + JSON.stringify(data.data.addNewDrink.drinks_name));
             },
             error: () => {
                 alert('error');
@@ -143,8 +169,7 @@ $(document).ready(() => {
                  }`
             }),
             success: () => {
-                alert(JSON.stringify({ success:true }));
-                $('#status').html("Deleted!");
+                $('#deleteDrink-info').html("Deleted!");
             },
             error: () => {
                 alert('error');
@@ -175,8 +200,7 @@ $(document).ready(() => {
                  }`
             }),
             success: (data) => {
-                alert(JSON.stringify({ success : true }));
-                $('#status').html('Update: ' + data.data.updateDrink.drinks_name);
+                $('#updateDrink-info').html('Updated to: ' + data.data.updateDrink.drinks_name);
             },
             error: () => {
                 alert('error');
@@ -203,7 +227,7 @@ $(document).ready(() => {
             }),
 
             success: (data) => {
-                alert(JSON.stringify(data));
+                $('#drink-info1').html(data.data.drinks.reviews_comment);
             }
 
         });
@@ -222,7 +246,7 @@ $(document).ready(() => {
             }),
 
             success: (data) => {
-                alert(JSON.stringify(data));
+                $('#drink-info2').html(data.data.drinks.reviews_comment);
             }
 
         });
@@ -241,7 +265,7 @@ $(document).ready(() => {
             }),
 
             success: (data) => {
-                alert(JSON.stringify(data));
+                $('#drink-info3').html(data.data.drinks.reviews_comment);
             }
 
         });
@@ -249,6 +273,132 @@ $(document).ready(() => {
 
 });
 
+// Get drink descriptions
+$(document).ready(() => {
+    $('#am_bio').click(() => {
+        $.ajax({
+            url: '/api/graphql',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({
+                query: `{
+                        drink_description(id: 1) {
+                             drink_title
+                             drink_bio
+                        }
+                 }`
+            }),
+
+            success: (data) => {
+                $('#drink-info1').html(data.data.drink_description.drink_bio);
+            }
+
+        });
+    });
+    $('#l_bio').click(() => {
+        $.ajax({
+            url: '/api/graphql',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({
+                query: `{
+                        drink_description(id: 2) {
+                             drink_title
+                             drink_bio
+                        }
+                 }`
+            }),
+
+            success: (data) => {
+                $('#drink-info2').html(data.data.drink_description.drink_bio);
+            }
+
+        });
+    });
+    $('#ch_bio').click(() => {
+        $.ajax({
+            url: '/api/graphql',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({
+                query: `{
+                        drink_description(id: 3) {
+                             drink_title
+                             drink_bio
+                        }
+                 }`
+            }),
+
+            success: (data) => {
+                $('#drink-info3').html(data.data.drink_description.drink_bio);
+            }
+
+        });
+    });
+
+});
+
+// Get questions
+$(document).ready(() => {
+    $('#am_fav').click(() => {
+        $.ajax({
+            url: '/api/graphql',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({
+                query: `{
+                          questions(id:1) { 
+                            question_title
+                           } 
+                 }`
+            }),
+
+            success: (data) => {
+                $('#drink-info1').html(data.data.questions.question_title);
+            }
+
+        });
+    });
+    $('#l_fav').click(() => {
+        $.ajax({
+            url: '/api/graphql',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({
+                query: `{
+                        questions(id:2) { 
+                            question_title
+                           } 
+                 }`
+            }),
+
+            success: (data) => {
+                $('#drink-info2').html(data.data.questions.question_title);
+            }
+
+        });
+    });
+    $('#ch_fav').click(() => {
+        $.ajax({
+            url: '/api/graphql',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({
+                query: `{
+                        questions(id:3) { 
+                            question_title
+                           } 
+                 }`
+            }),
+
+            success: (data) => {
+                $('#drink-info3').html(data.data.questions.question_title);
+            }
+
+        });
+    });
+
+});
 
 // Open popup
 const popUp = (e) => {

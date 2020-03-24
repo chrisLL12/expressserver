@@ -15,9 +15,9 @@ import knex from '../../src/database';
         });
     });
 
-// const fakeDrink = {
-//     drinks_name: 'iced caramel coffee'
-// };
+const fakeDrink = {
+    drinks_name: 'iced caramel coffee'
+};
 
 describe('fake drink test', () => {
     let drink_id;

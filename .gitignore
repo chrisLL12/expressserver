@@ -107,3 +107,6 @@ dist
 
 #.idea folder
 .idea/
+
+# Config file
+public/config.js

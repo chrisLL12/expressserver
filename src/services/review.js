@@ -10,6 +10,15 @@ export const addDrink = async ({ id, drinks_name }) => {
     return drink;
 };
 
+// Add question
+export const addNewQuestion = async ({ id, question_title }) => {
+    const [question] = await knex('questions').insert({
+        id,
+        question_title
+    }).returning(['id', 'question_title']);
+    return question;
+};
+
 // Get drink
 export const getDrink = async id => {
     await knex('drinks')
@@ -26,6 +35,19 @@ export const getReviewById = async id =>
         .where({ id }))
         [0];
 
+// Get question by id
+export const getQuestionById = async id =>
+    (await knex('questions')
+        .select()
+        .where({ id }))
+        [0];
+
+// Get drink description by id
+export const getDescriptionById = async id =>
+    (await knex('drink_description')
+        .select()
+        .where({ id }))
+        [0];
 
 // Update drink
 export const updateDrinkChange = async ({ id, drinks_name }) => {

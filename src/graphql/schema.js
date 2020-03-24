@@ -4,11 +4,12 @@ export default buildSchema(`
     type Query {
         drinks(id: ID!): Review
         reviews(id: ID!): Drink
+        drink_description(id: ID!): Description
+        questions(id: ID!): Question
         currentUser: User  
     }  
     
     type Drink {
-        id: ID!
         drinks_name: String!
     }  
     
@@ -17,6 +18,16 @@ export default buildSchema(`
         reviews_comment: String!
         submitter: ID!
     }
+    
+    type Description {
+        id: ID!
+        drink_title: String!
+        drink_bio: String!
+    }
+    
+    type Question { 
+        question_title: String!
+     }
     
     type User {
         id: ID!
@@ -33,11 +44,16 @@ export default buildSchema(`
         deleteDrink (id: ID!): SuccessResponse
         updateDrink (drink: DrinksUpdate!): Drink
         addReview (review: ReviewsInput!): Review
+        addQuestion (question: QuestionInput!): Question
         login(loginInput: LoginInput!): User
         requestPasswordReset(username: String!): SuccessResponse
         resetPassword(resetInput: PasswordResetInput!): SuccessResponse
         signup(user: UserInput!): User
     }
+    
+    input QuestionInput { 
+        question_title: String!
+     }  
     
     input UserInput { 
         displayName: String!
@@ -58,7 +74,6 @@ export default buildSchema(`
     }
     
     input DrinksInput {
-        id: ID!
         drinks_name: String!
     }
     

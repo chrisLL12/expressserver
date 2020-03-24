@@ -15,14 +15,32 @@ h1 {
     margin-left: 2.5rem;
 }
 
-#am, #l, #ch, #es {
-    width: 20rem;
-    height: 40px;
+#am, #l, #ch, #es, #am_bio, #l_bio, #ch_bio, #am_fav, #l_fav, #ch_fav, #newDrink-info {
+    width: 6rem;
+    height: 3rem;
     background-color: #ffffff;
     font-family: Futura;
     font-size: 1rem;
     border-radius: 0.5rem;
 
+}
+
+label {
+    width: 10rem;
+    height: 2rem;
+    background-color: #ffffff;
+    font-family: Futura;
+    font-size: 1.4rem;
+    border-radius: 0.5rem;
+}
+
+#drink-info1, #drink-info2, #drink-info3, #newQuestion-info, #newDrink-info, #updateDrink-info, #deleteDrink-info {
+    width: 20rem;
+    height: 7rem;
+    background-color: #ffffff;
+    font-family: Futura;
+    font-size: 1rem;
+    border-radius: 0.5rem;
 }
 
 #up, #del {
@@ -40,18 +58,19 @@ h1 {
     background-color: transparent;
 }
 
-#am:hover, #l:hover, #ch:hover, #es:hover, #up:hover, #del:hover {
+#am:hover, #l:hover, #ch:hover, #es:hover, #up:hover, #del:hover, #am_bio:hover, #am_fav:hover,
+#l_bio:hover, #l_fav:hover, #ch_bio:hover, #ch_fav:hover {
     cursor: pointer;
     background-color: #d3d3d3;
 }
 
 
 #addForm ul li #addId,#updateForm ul li #updateId,
-#deleteForm ul li #deleteId {
+#deleteForm ul li #deleteId, #addQuestionForm ul li #addQuestion {
     width: 20rem;
     height: 25px;
     background-color: #ffffff;
-    font-family: Futura;
+    font-family: Futura, Georgia, Helvetica;
     font-size: 1rem;
     border-radius: 0.5rem;
     padding: 0.4rem;
@@ -59,11 +78,11 @@ h1 {
 }
 
 #addForm ul li #addDrink, #updateForm ul li #updateDrink,
-#deleteForm ul li #deleteDrink {
+#deleteForm ul li #deleteDrink, #addQuestionForm ul li #addQuestion  {
     width: 20rem;
     height: 25px;
     background-color: #ffffff;
-    font-family: Futura;
+    font-family: Futura, Georgia, Helvetica;
     font-size: 1rem;
     border-radius: 0.5rem;
     padding: 0.4rem;
@@ -74,7 +93,7 @@ ul {
 }
 
 
-#submit-button, #updateButton, #deleteButton {
+#submit-button, #updateButton, #deleteButton, #question_submit {
     height: 40px;
     background-color: #ff0000;
     color: #fff;
@@ -91,7 +110,7 @@ h3 {
     margin-left: 2.5rem;
 }
 
-#submit-button:hover {
+#submit-button:hover, #question_submit:hover {
     cursor: pointer;
     background-color: #db0f00;
 }
@@ -194,4 +213,12 @@ h3 {
     background-color: #f0f0f0;
     border-radius: 0.2rem;
     font-family: Futura, Helvetica, Georgia;
+}
+
+#map {
+    border: 1px solid #333;
+    width: 80vw;
+    height: 80vh;
+    font-family: Futura;
+    font-size: 1.4rem;
 }

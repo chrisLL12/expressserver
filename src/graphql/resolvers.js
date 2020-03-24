@@ -5,6 +5,9 @@ import { deleteDrink } from "../services/review";
 import { getReviewById } from "../services/review";
 import { addDrink } from "../services/review";
 import { updateDrinkChange } from "../services/review";
+import { getDescriptionById } from "../services/review";
+import { addNewQuestion } from "../services/review";
+import { getQuestionById } from "../services/review";
 // import { sendResetEmail } from '../email';
 
 const convertUserFromDatabase = user => {
@@ -31,6 +34,15 @@ const resolvers = {
 
     // Resolve review by id
     drinks: async ({ id }) => await getReviewById(id),
+
+    // Resolve drink description by id
+    drink_description: async ({ id }) => await getDescriptionById(id),
+
+    // Resolve add question
+    addQuestion: async ({ question }) => await addNewQuestion(question),
+
+    // Resolve get question
+    questions: async ({ id }) => await getQuestionById(id),
 
     login: async ({loginInput: {username, password}}, {session}) => {
         const user = await getUserByUsername(username);

@@ -17,17 +17,39 @@
 
 </div>
 <ul id="buttons">
-    <li><button id="am">Caramel Latte</button></li>
-    <li><button id="l">Iced Vanilla Coffee</button></li>
-    <li><button id="ch">Hazelnut Americano</button></li>
+    <label for="am">Caramel Latte</label>
+    <li><button id="am">Reviews</button><button id="am_bio">Description</button><button id="am_fav">Questions</button></li>
+    <div id="drink-info1"><span></span></div>
+
+    <label for="l">Iced Vanilla Coffee</label>
+    <li><button id="l">Reviews</button><button id="l_bio">Description</button><button id="l_fav">Questions</button></li>
+    <div id="drink-info2"><span></span></div>
+
+    <label for="ch">Hazelnut Americano</label>
+    <li><button id="ch">Reviews</button><button id="ch_bio">Description</button><button id="ch_fav">Questions</button></li>
+    <div id="drink-info3"><span></span></div>
 </ul>
+
+<h3>Ask a question!</h3>
+<form id="addQuestionForm">
+    <ul>
+        <li>
+            <input id="addQuestion" name="question_title" placeholder="Ask a question here!" />
+        </li>
+
+        <li>
+            <input id="question_submit" type="submit" value="Submit"/>
+        </li>
+    </ul>
+</form>
+
+<div id="newQuestion-info"></div>
+
+
 
 <h3>Add a drink!</h3>
 <form id="addForm">
     <ul>
-        <li>
-            <input id="addId" name="id" placeholder="10" />
-        </li>
         <li>
            <input id="addDrink" name="drinks_name" placeholder="Add a drink!" />
         </li>
@@ -37,6 +59,8 @@
         </li>
     </ul>
 </form>
+
+<div id="newDrink-info"></div>
 
 <!-- Update form -->
 <h3>Update Drink</h3>
@@ -55,6 +79,8 @@
     </ul>
 </form>
 
+<div id="updateDrink-info"></div>
+
 <!-- Delete drink -->
 <h3>Delete a Drink</h3>
 <form id="deleteForm">
@@ -67,6 +93,8 @@
         </li>
     </ul>
 </form>
+
+<div id="deleteDrink-info"></div>
 
 <!-- Popup signup/login section -->
 <div class="bg-modal">
@@ -92,7 +120,30 @@
     </div>
 </div>
 
+<!-- Google maps -->
+<h3>Find a coffee shop near you!</h3>
+<div id="map"></div>
+<script>
+    let map;
+    document.addEventListener("DOMContentLoaded", () => {
+        let s = document.createElement("script");
+        document.head.appendChild(s);
+        s.addEventListener("load", () => {
+            console.log("script loaded");
+            map = new google.maps.Map(document.getElementById("map"), {
+                center: {
+                    lat: 33.713612,
+                    lng: -117.757224
+                },
+                zoom: 16,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            });
+        });
+         //s.src = `https://maps.googleapis.com/maps/api/js?key=${config.API_KEY}`;
+    });
+</script>
 
+<script src="./config.js"></script>
 <script
         src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
