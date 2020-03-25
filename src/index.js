@@ -1,7 +1,8 @@
-import express from 'express';
+import express, { response } from 'express';
 import graphqlHTTP from 'express-graphql';
 import session from 'express-session';
 import ConnectSessionKnex from 'connect-session-knex';
+require('dotenv').config();
 //import { addDrink, getDrink, updateDrink, deleteDrink } from './services/review';
 
 
@@ -21,6 +22,8 @@ if (!['development', 'test'].includes(env)) {
         res.status(500).send();
     });
 }
+
+const key = process.env.API_KEY;
 
 const ONE_MONTH = 7 * 24 * 60 * 60 * 1000;
 const KnexSessionStore = ConnectSessionKnex(session);

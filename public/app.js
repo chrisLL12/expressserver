@@ -400,6 +400,25 @@ $(document).ready(() => {
 
 });
 
+// Google maps
+let map;
+document.addEventListener("DOMContentLoaded", () => {
+    let s = document.createElement("script");
+    document.head.appendChild(s);
+    s.addEventListener("load", () => {
+        console.log("script loaded");
+        map = new google.maps.Map(document.getElementById("map"), {
+            center: {
+                lat: 33.713612,
+                lng: -117.757224
+            },
+            zoom: 16,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+    });
+    s.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCKXIWTg0j2DByENAlir_kbZijHoLer2vk`;
+});
+
 // Open popup
 const popUp = (e) => {
     e.preventDefault();
