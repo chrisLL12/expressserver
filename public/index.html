@@ -125,7 +125,6 @@
 <div id="map"></div>
 <script>
     let map;
-    const API_KEY = process.env.API_KEY;
     document.addEventListener("DOMContentLoaded", () => {
         let s = document.createElement("script");
         document.head.appendChild(s);
@@ -140,7 +139,7 @@
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             });
         });
-         s.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}`;
+         s.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.API_KEY}`;
     });
 </script>
 
