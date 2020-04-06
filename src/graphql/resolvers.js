@@ -44,6 +44,7 @@ const resolvers = {
     // Resolve get question
     questions: async ({ id }) => await getQuestionById(id),
 
+    // User login
     login: async ({loginInput: {username, password}}, {session}) => {
         const user = await getUserByUsername(username);
         const matches = await compareHashed(password, user.password);
@@ -51,11 +52,19 @@ const resolvers = {
         return session.user;
     },
 
+    // User logout. Delete user session and return boolean
+    logout: async (args, {session}) => {
+        delete session.user;
+        return { wasSuccessful : true };
+    },
+
+    // User signup
     signup: async ({ user }, { session }) => {
         session.user = convertUserFromDatabase(await createUser(user));
         return session.user;
     },
 
+    // Current user logged in
     currentUser: (args, { session }) => session.user
 
     // requestPasswordReset: async ({ username}) => {

@@ -46,6 +46,7 @@ export default buildSchema(`
         addReview (review: ReviewsInput!): Review
         addQuestion (question: QuestionInput!): Question
         login(loginInput: LoginInput!): User
+        logout: SuccessResponse
         requestPasswordReset(username: String!): SuccessResponse
         resetPassword(resetInput: PasswordResetInput!): SuccessResponse
         signup(user: UserInput!): User
@@ -85,5 +86,6 @@ export default buildSchema(`
         id: ID! 
         drinks_name: String!
     }
+    
     
 `);

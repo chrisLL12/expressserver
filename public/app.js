@@ -31,6 +31,30 @@ $(document).ready(() => {
     });
 });
 
+// Logout user
+$(document).ready(() => {
+    $('#logout-button').click(() => {
+        $.ajax({
+            url: '/api/graphql/',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({
+                query: `mutation { 
+                    logout{ 
+                        wasSuccessful  
+                     }
+                 }`
+            }),
+            success: (data) => {
+                $('#status').html("Logged out " + JSON.stringify(data.data.logout.wasSuccessful));
+            },
+            error: () => {
+                alert('error');
+            }
+        });
+    });
+});
+
 // Current user
 $(document).ready(() => {
     $(window).on('load', () => {
@@ -416,7 +440,7 @@ document.addEventListener("DOMContentLoaded", () => {
             mapTypeId: google.maps.MapTypeId.ROADMAP
         });
     });
-    s.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCKXIWTg0j2DByENAlir_kbZijHoLer2vk`;
+    //s.src = ``;
 });
 
 // Open popup
