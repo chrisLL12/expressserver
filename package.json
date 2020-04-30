@@ -29,7 +29,7 @@
     "express-graphql": "^0.9.0",
     "express-session": "^1.17.0",
     "graphql": "^14.6.0",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "knex": "^0.20.9",
     "lokka": "^1.7.0",
     "lokka-transport-http": "^1.6.1",
